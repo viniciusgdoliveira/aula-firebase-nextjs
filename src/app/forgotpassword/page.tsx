@@ -2,16 +2,16 @@
 "use client"; // Ensure this file is treated as a Client Component
 
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"; // Import from next/navigation
 import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "../../firebase"; // Adjust the path based on your structure
+import { auth } from "../../../firebase"; // Adjust the path based on your structure
 import Link from "next/link";
 
 export default function ForgotPassword() {
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
 	const [error, setError] = useState("");
-	const router = useRouter();
+	const router = useRouter(); // Use useRouter from next/navigation
 
 	const handleResetPassword = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -29,12 +29,12 @@ export default function ForgotPassword() {
 	};
 
 	return (
-		<div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+		<div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", flexDirection: "column" }}>
 			<form
 				onSubmit={handleResetPassword}
-				style={{ display: "flex", flexDirection: "column", width: "300px" }}
+				style={{ display: "flex", flexDirection: "column", width: "300px", padding: "20px" }}
 			>
-				<h2>Esqueceu a senha?</h2>
+				<h2 style={{ marginBottom: "20px" }}>Esqueceu a senha?</h2>
 
 				<input
 					type="email"
@@ -42,7 +42,7 @@ export default function ForgotPassword() {
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 					required
-					style={{ marginBottom: "10px", padding: "8px" }}
+					style={{ marginBottom: "10px", padding: "10px", borderRadius: "4px", border: "1px solid #ccc" }}
 				/>
 
 				{error && <p style={{ color: "red" }}>{error}</p>}
@@ -50,10 +50,11 @@ export default function ForgotPassword() {
 
 				<button
 					type="submit"
-					style={{ padding: "8px", backgroundColor: "blue", color: "white", cursor: "pointer" }}
+					style={{ padding: "10px", backgroundColor: "blue", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}
 				>
 					Enviar e-mail para resetar
 				</button>
+
 				<div style={{ marginTop: "20px", display: "flex", justifyContent: "space-between" }}>
 					<Link
 						href="/"

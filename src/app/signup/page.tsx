@@ -2,9 +2,9 @@
 "use client"; // Ensure this file is treated as a Client Component
 
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation"; // Change the router import to next/navigation
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase"; // Adjust the path based on your structure
+import { auth } from "../../../firebase"; // Adjust the path based on your structure
 import Link from "next/link";
 
 export default function Signup() {
@@ -20,7 +20,7 @@ export default function Signup() {
 		try {
 			await createUserWithEmailAndPassword(auth, email, password);
 			// Redirect to the dashboard or homepage after successful signup
-			router.push("/");
+			router.push("/"); // Adjust this path based on your app structure
 		} catch {
 			// Handle signup error
 			setError("Failed to create an account. Please check your email and password.");

@@ -1,46 +1,33 @@
 /** @format */
-"use client";
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { app } from "../../firebase";
+"use client"; // Ensure this file is treated as a Client Component
 
-// Define the shape of the context state
-interface UserContextProps {
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { auth } from "../../firebase";
+
+interface UserContextType {
 	user: User | null;
-	email: string | null;
 	loading: boolean;
 }
 
-// Create the context
-const UserContext = createContext<UserContextProps | undefined>(undefined);
+const UserContext = createContext<UserContextType | undefined>(undefined);
 
-// Create a provider component
-export const UserProvider = ({ children }: { children: ReactNode }) => {
+export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null);
-	const [email, setEmail] = useState<string | null>(null);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		const auth = getAuth(app);
-		// Monitor Firebase Auth state
-		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			if (user) {
-				setUser(user);
-				setEmail(user.email); // Get the user's email
-			} else {
-				setUser(null);
-				setEmail(null);
-			}
+		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+			setUser(currentUser);
 			setLoading(false);
 		});
 
-		return () => unsubscribe(); // Cleanup the listener on unmount
+		return () => unsubscribe(); // Clean up the subscription
 	}, []);
 
-	return <UserContext.Provider value={{ user, email, loading }}>{loading ? <p>Loading...</p> : children}</UserContext.Provider>;
+	return <UserContext.Provider value={{ user, loading }}>{!loading && children}</UserContext.Provider>;
 };
 
-// Create a custom hook to consume the context
 export const useUser = () => {
 	const context = useContext(UserContext);
 	if (context === undefined) {
