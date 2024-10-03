@@ -27,7 +27,7 @@ const Box = ({ children }: Props) => {
 	return (
 		<div style={{ padding: "20px" }}>
 			<header style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-				<h1>Bem vindo, {user ? user.email : "Anonimo"}</h1> {/* Handle user null case */}
+				<h1>Olá, {user ? user.email : "Anonimo"}</h1> {/* Handle user null case */}
 				<div style={{ display: "flex", alignItems: "center" }}>
 					<Link
 						href="/create"

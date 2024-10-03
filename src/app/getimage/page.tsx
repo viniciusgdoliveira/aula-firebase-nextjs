@@ -59,7 +59,7 @@ const ImageGallery = () => {
 			<div>
 				<h2>Galeria</h2>
 				{loading ? (
-					<p>Loading images...</p>
+					<p>Carregando images...</p>
 				) : (
 					<div
 						style={{
@@ -91,7 +91,7 @@ const ImageGallery = () => {
 									style={{ marginTop: "10px", backgroundColor: "red", color: "white", padding: "5px 10px" }}
 									onClick={() => handleDelete(index)}
 								>
-									Delete
+									Deletar
 								</button>
 							</div>
 						))}

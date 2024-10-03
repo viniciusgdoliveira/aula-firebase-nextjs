@@ -20,7 +20,7 @@ export default function ForgotPassword() {
 
 		try {
 			await sendPasswordResetEmail(auth, email);
-			setMessage("Check your inbox for further instructions to reset your password.");
+			setMessage("Verifique seu e-mail.");
 			setEmail(""); // Clear email input after sending the reset email
 			router.push("/"); // Redirect to the login page
 		} catch {

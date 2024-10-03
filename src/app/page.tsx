@@ -43,7 +43,7 @@ const HomePage = () => {
 					type="password"
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
-					placeholder="Password"
+					placeholder="Senha"
 					required
 					style={{ marginBottom: "10px", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
 				/>

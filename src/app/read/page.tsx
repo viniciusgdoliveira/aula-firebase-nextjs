@@ -50,8 +50,8 @@ const Read = () => {
 			setNewIdade(""); // Clear newIdade
 			fetchUsers(); // Refetch users to get updated data
 		} catch (error) {
-			console.error("Error updating user: ", error);
-			setError("Failed to update user. Please try again.");
+			console.error("Erro: ", error);
+			setError("Erro.");
 		}
 	};
 
@@ -91,7 +91,7 @@ const Read = () => {
 										type="text"
 										value={newNome}
 										onChange={(e) => setNewNome(e.target.value)}
-										placeholder="New name"
+										placeholder="Novo Nome"
 										style={{ padding: "8px", border: "1px solid #ccc", borderRadius: "4px", width: "100%" }}
 									/>
 								) : (
@@ -104,7 +104,7 @@ const Read = () => {
 										type="number"
 										value={newIdade}
 										onChange={(e) => setNewIdade(e.target.value)}
-										placeholder="New age"
+										placeholder="Nova Idade"
 										style={{ padding: "8px", border: "1px solid #ccc", borderRadius: "4px", width: "100%" }}
 									/>
 								) : (
