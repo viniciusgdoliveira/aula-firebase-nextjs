@@ -35,7 +35,7 @@ const Read = () => {
 
 	useEffect(() => {
 		fetchUsers();
-	}, [user]); // Refetch when user changes
+	}, [fetchUsers]); // Refetch when user changes
 
 	// Handle updating a user
 	const handleUpdate = async (id: string) => {
