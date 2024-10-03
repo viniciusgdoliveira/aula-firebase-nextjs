@@ -57,7 +57,7 @@ const UploadImage = () => {
 			</button>
 			{imageUrl && (
 				<div style={{ marginTop: "20px" }}>
-					<h3>Uploaded Image:</h3>
+					<h3>Imagem:</h3>
 					<a
 						href={imageUrl}
 						download

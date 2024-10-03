@@ -41,6 +41,18 @@ const Box = ({ children }: Props) => {
 					>
 						Função GET
 					</Link>
+					<Link
+						href="/imagem"
+						style={{ marginRight: "20px", textDecoration: "none", color: "#0070f3" }}
+					>
+						Adicionar Imagem
+					</Link>
+					<Link
+						href="/getimage"
+						style={{ marginRight: "20px", textDecoration: "none", color: "#0070f3" }}
+					>
+						Todas Imagens
+					</Link>
 					<button
 						onClick={handleLogout}
 						style={{ padding: "8px", backgroundColor: "red", color: "white" }}
