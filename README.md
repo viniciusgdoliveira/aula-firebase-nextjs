@@ -41,5 +41,28 @@ Após o desenvolvimento, a aplicação foi publicada na **Vercel** e está dispo
 1. Clone o repositório:
    ```bash
    git clone https://github.com/viniciusgdoliveira/aula-firebase-nextjs.git
-  ```
+
+2. Instale as dependências:
+   ```bash
+   npm install
+3. Configure as variáveis de ambiente: Crie um arquivo .env.local na raiz do projeto e adicione suas credenciais do Firebase:
+
+   NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-auth-domain
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-storage-bucket
+   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
+   NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
+4. Execute o projeto:
+   ```bash
+   npm run dev
+5. Acesse a aplicação localmente:
+   Abra http://localhost:3000 no seu navegador.
+
+
+## Contribuições
+Contribuições, issues e pull requests são bem-vindos! Sinta-se à vontade para melhorar ou expandir este projeto.
+
+
+
 
