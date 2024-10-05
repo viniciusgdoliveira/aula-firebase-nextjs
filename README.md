@@ -1,3 +1,5 @@
+[Leia em Português](./README.pt-br.md) | [Read in English](./README.md)
+
 # Aula Firebase com Next.js
 
 Este projeto é uma demonstração da integração entre **Next.js**, **Firebase**, **Firestore**, **Cloud Storage** e **Vercel**. O foco é a criação de uma aplicação com autenticação de usuários, manipulação de documentos no Firestore, upload de imagens no Cloud Storage e o deploy da aplicação na Vercel.
