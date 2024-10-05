@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aula Firebase com Next.js
 
-## Getting Started
+Este projeto é uma demonstração da integração entre **Next.js**, **Firebase**, **Firestore**, **Cloud Storage** e **Vercel**. O foco é a criação de uma aplicação com autenticação de usuários, manipulação de documentos no Firestore, upload de imagens no Cloud Storage e o deploy da aplicação na Vercel.
 
-First, run the development server:
+A aplicação está online e pode ser acessada [aqui](https://aula-firebase.vercel.app/).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tecnologias Utilizadas
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js**: Framework React para construção da interface e páginas dinâmicas.
+- **Firebase Authentication**: Autenticação de usuários utilizando email e senha.
+- **Firestore**: Banco de dados NoSQL para armazenamento de documentos.
+- **Firebase Cloud Storage**: Armazenamento de arquivos, como imagens, na nuvem.
+- **Vercel**: Plataforma utilizada para o deploy da aplicação.
+- **React Context**: Gerenciamento do estado global para autenticação e navegação entre páginas.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Funcionalidades
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Página de Login
+- Login de usuário com email e senha.
+- Links para **Cadastre-se** e **Esqueci a senha**, utilizando o Firebase Authentication.
 
-## Learn More
+### 2. Autenticação com React Context
+- O estado de autenticação é gerenciado com React Context, garantindo que o email do usuário esteja disponível após o login.
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Páginas Disponíveis (após login)
+O **header** exibe links para navegação entre as páginas e o email do usuário autenticado.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Criar**: Permite adicionar um documento no Firestore, com campos personalizados.
+- **Função GET**: Lista todos os documentos adicionados no Firestore, com botões para **update** e **delete** na linha de cada documento.
+- **Adicionar Imagem**: Faz upload de uma imagem para o Firebase Cloud Storage e disponibiliza o link para download.
+- **GET Imagens**: Lista todas as imagens armazenadas no Cloud Storage, com botões de **download** e **delete** para cada imagem.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Variáveis de Ambiente
+Foram utilizadas variáveis de ambiente para armazenar as credenciais do Firebase no arquivo `.env.local`.
 
-## Deploy on Vercel
+## Deploy
+Após o desenvolvimento, a aplicação foi publicada na **Vercel** e está disponível em: [aula-firebase.vercel.app](https://aula-firebase.vercel.app/).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Como Executar o Projeto Localmente
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/viniciusgdoliveira/aula-firebase-nextjs.git
+  ```
+
