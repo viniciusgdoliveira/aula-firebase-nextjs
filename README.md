@@ -1,53 +1,54 @@
 [Leia em Português](./README.pt-br.md) | [Read in English](./README.md)
 
-# Aula Firebase com Next.js
+# Firebase with Next.js Class
 
-Este projeto é uma demonstração da integração entre **Next.js**, **Firebase**, **Firestore**, **Cloud Storage** e **Vercel**. O foco é a criação de uma aplicação com autenticação de usuários, manipulação de documentos no Firestore, upload de imagens no Cloud Storage e o deploy da aplicação na Vercel.
+This project demonstrates the integration of **Next.js**, **Firebase**, **Firestore**, **Cloud Storage**, and **Vercel**. The goal is to create an application with user authentication, document management in Firestore, image uploads in Cloud Storage, and deploy the app on Vercel.
 
-A aplicação está online e pode ser acessada [aqui](https://aula-firebase.vercel.app/).
+The application is online and can be accessed [here](https://aula-firebase.vercel.app/).
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **Next.js**: Framework React para construção da interface e páginas dinâmicas.
-- **Firebase Authentication**: Autenticação de usuários utilizando email e senha.
-- **Firestore**: Banco de dados NoSQL para armazenamento de documentos.
-- **Firebase Cloud Storage**: Armazenamento de arquivos, como imagens, na nuvem.
-- **Vercel**: Plataforma utilizada para o deploy da aplicação.
-- **React Context**: Gerenciamento do estado global para autenticação e navegação entre páginas.
+- **Next.js**: React framework for building the interface and dynamic pages.
+- **Firebase Authentication**: User authentication using email and password.
+- **Firestore**: NoSQL database for document storage.
+- **Firebase Cloud Storage**: Cloud storage for files, such as images.
+- **Vercel**: Platform used to deploy the application.
+- **React Context**: Global state management for authentication and page navigation.
 
-## Funcionalidades
+## Features
 
-### 1. Página de Login
-- Login de usuário com email e senha.
-- Links para **Cadastre-se** e **Esqueci a senha**, utilizando o Firebase Authentication.
+### 1. Login Page
+- User login with email and password.
+- Links to **Sign Up** and **Forgot Password**, using Firebase Authentication.
 
-### 2. Autenticação com React Context
-- O estado de autenticação é gerenciado com React Context, garantindo que o email do usuário esteja disponível após o login.
+### 2. Authentication with React Context
+- The authentication state is managed with React Context, ensuring the user's email is available after login.
 
-### 3. Páginas Disponíveis (após login)
-O **header** exibe links para navegação entre as páginas e o email do usuário autenticado.
+### 3. Available Pages (after login)
+The **header** displays links for navigation between pages and shows the authenticated user's email.
 
-- **Criar**: Permite adicionar um documento no Firestore, com campos personalizados.
-- **Função GET**: Lista todos os documentos adicionados no Firestore, com botões para **update** e **delete** na linha de cada documento.
-- **Adicionar Imagem**: Faz upload de uma imagem para o Firebase Cloud Storage e disponibiliza o link para download.
-- **GET Imagens**: Lista todas as imagens armazenadas no Cloud Storage, com botões de **download** e **delete** para cada imagem.
+- **Create**: Allows adding a document to Firestore with custom fields.
+- **Get Function**: Lists all documents added to Firestore, with **update** and **delete** buttons for each document.
+- **Add Image**: Uploads an image to Firebase Cloud Storage and provides a download link.
+- **Get Images**: Lists all images stored in Cloud Storage, with **download** and **delete** buttons for each image.
 
-## Variáveis de Ambiente
-Foram utilizadas variáveis de ambiente para armazenar as credenciais do Firebase no arquivo `.env.local`.
+## Environment Variables
+Environment variables were used to store Firebase credentials in the `.env.local` file.
 
 ## Deploy
-Após o desenvolvimento, a aplicação foi publicada na **Vercel** e está disponível em: [aula-firebase.vercel.app](https://aula-firebase.vercel.app/).
+After development, the application was deployed on **Vercel** and is available at: [aula-firebase.vercel.app](https://aula-firebase.vercel.app/).
 
-## Como Executar o Projeto Localmente
+## How to Run the Project Locally
 
-1. Clone o repositório:
+1. Clone the repository:
    ```bash
    git clone https://github.com/viniciusgdoliveira/aula-firebase-nextjs.git
 
-2. Instale as dependências:
+2. Install dependencies:
    ```bash
    npm install
-3. Configure as variáveis de ambiente: Crie um arquivo .env.local na raiz do projeto e adicione suas credenciais do Firebase:
+
+3. Set up environment variables: Create a .env.local file in the root of the project and add your Firebase credentials:
 
    NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
    
@@ -61,15 +62,16 @@ Após o desenvolvimento, a aplicação foi publicada na **Vercel** e está dispo
    
    NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
    
-5. Execute o projeto:
+4. Run the project:
    ```bash
    npm run dev
-6. Acesse a aplicação localmente:
-   Abra http://localhost:3000 no seu navegador.
+
+5. Access the application locally:
+   Open http://localhost:3000 in your browser.
 
 
-## Contribuições
-Contribuições, issues e pull requests são bem-vindos! Sinta-se à vontade para melhorar ou expandir este projeto.
+## Contributions
+Contributions, issues, and pull requests are welcome! Feel free to improve or expand this project.
 
 
 
