@@ -26,7 +26,7 @@ const HomePage = () => {
 
 	return (
 		<div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", flexDirection: "column" }}>
-			<h1 style={{ marginBottom: "20px" }}>Bem vindo!</h1>
+			<h1 style={{ marginBottom: "20px" }}>Bem vindo! {email}</h1>
 			<form
 				onSubmit={handleSubmit}
 				style={{ display: "flex", flexDirection: "column", width: "300px" }}
