@@ -1,6 +1,6 @@
 [Leia em Português](./README.pt-br.md) | [Read in English](./README.md)
 
-# Firebase with Next.js Class
+# Firebase with Next.js [Class](https://drive.google.com/file/d/1Jr7IBqKdmkUdZY9cif7d7MR_KybyRfkx/view?usp=sharing)
 
 This project demonstrates the integration of **Next.js**, **Firebase**, **Firestore**, **Cloud Storage**, and **Vercel**. The goal is to create an application with user authentication, document management in Firestore, image uploads in Cloud Storage, and deploy the app on Vercel.
 
