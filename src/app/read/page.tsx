@@ -69,81 +69,111 @@ const Read = () => {
 
 	return (
 		<Box>
-			<h2>Lista de dados do FireStore</h2>
-			{error && <p style={{ color: "red" }}>{error}</p>}
-			<table style={{ width: "100%", borderCollapse: "collapse", marginTop: "20px" }}>
-				<thead>
-					<tr>
-						<th style={{ padding: "12px", textAlign: "left", background: "#f2f2f2", borderBottom: "2px solid #ccc" }}>Name</th>
-						<th style={{ padding: "12px", textAlign: "left", background: "#f2f2f2", borderBottom: "2px solid #ccc" }}>Age</th>
-						<th style={{ padding: "12px", textAlign: "left", background: "#f2f2f2", borderBottom: "2px solid #ccc" }}>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{users.map((user, index) => (
-						<tr
-							key={user.id}
-							style={{ borderBottom: "1px solid #ddd", background: index % 2 === 0 ? "#f9f9f9" : "#fff" }}
-						>
-							<td style={{ padding: "12px", textAlign: "left" }}>
-								{editingUser?.id === user.id ? (
-									<input
-										type="text"
-										value={newNome}
-										onChange={(e) => setNewNome(e.target.value)}
-										placeholder="Novo Nome"
-										style={{ padding: "8px", border: "1px solid #ccc", borderRadius: "4px", width: "100%" }}
-									/>
-								) : (
-									user.nome
-								)}
-							</td>
-							<td style={{ padding: "12px", textAlign: "left" }}>
-								{editingUser?.id === user.id ? (
-									<input
-										type="number"
-										value={newIdade}
-										onChange={(e) => setNewIdade(e.target.value)}
-										placeholder="Nova Idade"
-										style={{ padding: "8px", border: "1px solid #ccc", borderRadius: "4px", width: "100%" }}
-									/>
-								) : (
-									user.idade
-								)}
-							</td>
-							<td style={{ padding: "12px", textAlign: "left" }}>
-								{editingUser?.id === user.id ? (
-									<button
-										onClick={() => handleUpdate(user.id)}
-										style={{ background: "#4CAF50", color: "white", border: "none", padding: "10px 15px", borderRadius: "4px", cursor: "pointer" }}
+			<div className="max-w-6xl mx-auto">
+				<h2 className="text-3xl font-bold text-dark-100 mb-8 text-center">
+					Lista de dados do FireStore
+				</h2>
+				
+				{error && (
+					<div className="bg-red-900/50 border border-red-700 text-red-300 px-4 py-3 rounded-lg mb-6">
+						{error}
+					</div>
+				)}
+				
+				<div className="bg-dark-800 rounded-xl shadow-dark-xl border border-dark-700 overflow-hidden">
+					<div className="overflow-x-auto">
+						<table className="w-full">
+							<thead className="bg-dark-700">
+								<tr>
+									<th className="px-6 py-4 text-left text-sm font-semibold text-dark-200 border-b border-dark-600">
+										Nome
+									</th>
+									<th className="px-6 py-4 text-left text-sm font-semibold text-dark-200 border-b border-dark-600">
+										Idade
+									</th>
+									<th className="px-6 py-4 text-left text-sm font-semibold text-dark-200 border-b border-dark-600">
+										Ações
+									</th>
+								</tr>
+							</thead>
+							<tbody className="divide-y divide-dark-600">
+								{users.map((user, index) => (
+									<tr
+										key={user.id}
+										className={`hover:bg-dark-700/50 transition-colors duration-200 ${
+											index % 2 === 0 ? "bg-dark-800" : "bg-dark-800/50"
+										}`}
 									>
-										Save
-									</button>
-								) : (
-									<>
-										<button
-											onClick={() => {
-												setEditingUser(user);
-												setNewNome(user.nome);
-												setNewIdade(user.idade.toString());
-											}}
-											style={{ background: "#2196F3", color: "white", border: "none", padding: "10px 15px", borderRadius: "4px", cursor: "pointer" }}
-										>
-											Editar
-										</button>
-										<button
-											onClick={() => handleDelete(user.id)}
-											style={{ background: "#f44336", color: "white", border: "none", padding: "10px 15px", borderRadius: "4px", marginLeft: "5px", cursor: "pointer" }}
-										>
-											Deletar
-										</button>
-									</>
-								)}
-							</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
+										<td className="px-6 py-4 text-dark-100">
+											{editingUser?.id === user.id ? (
+												<input
+													type="text"
+													value={newNome}
+													onChange={(e) => setNewNome(e.target.value)}
+													placeholder="Novo Nome"
+													className="w-full px-3 py-2 bg-dark-700 border border-dark-600 rounded-lg text-dark-100 placeholder-dark-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+												/>
+											) : (
+												user.nome
+											)}
+										</td>
+										<td className="px-6 py-4 text-dark-100">
+											{editingUser?.id === user.id ? (
+												<input
+													type="number"
+													value={newIdade}
+													onChange={(e) => setNewIdade(e.target.value)}
+													placeholder="Nova Idade"
+													className="w-full px-3 py-2 bg-dark-700 border border-dark-600 rounded-lg text-dark-100 placeholder-dark-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+												/>
+											) : (
+												user.idade
+											)}
+										</td>
+										<td className="px-6 py-4">
+											<div className="flex space-x-2">
+												{editingUser?.id === user.id ? (
+													<button
+														onClick={() => handleUpdate(user.id)}
+														className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
+													>
+														Salvar
+													</button>
+												) : (
+													<>
+														<button
+															onClick={() => {
+																setEditingUser(user);
+																setNewNome(user.nome);
+																setNewIdade(user.idade.toString());
+															}}
+															className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
+														>
+															Editar
+														</button>
+														<button
+															onClick={() => handleDelete(user.id)}
+															className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
+														>
+															Deletar
+														</button>
+													</>
+												)}
+											</div>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+					
+					{users.length === 0 && (
+						<div className="text-center py-12">
+							<p className="text-dark-400 text-lg">Nenhum dado encontrado</p>
+						</div>
+					)}
+				</div>
+			</div>
 		</Box>
 	);
 };

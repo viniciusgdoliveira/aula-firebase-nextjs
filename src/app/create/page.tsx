@@ -45,37 +45,63 @@ const CreatePage = () => {
 
 	return (
 		<Box>
-			<div style={{ padding: "20px", maxWidth: "400px", margin: "0 auto", border: "1px solid #ddd", borderRadius: "8px", boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", backgroundColor: "#fff" }}>
-				<h1 style={{ textAlign: "center", marginBottom: "20px", color: "#333" }}>Adicione um dado no FireStore</h1>
-				<form
-					onSubmit={handleSubmit}
-					style={{ display: "flex", flexDirection: "column" }}
-				>
-					<input
-						type="text"
-						placeholder="Nome"
-						value={nome}
-						onChange={(e) => setNome(e.target.value)}
-						required
-						style={{ marginBottom: "10px", padding: "10px", borderRadius: "4px", border: "1px solid #ccc", fontSize: "16px" }}
-					/>
-					<input
-						type="number"
-						placeholder="Idade"
-						value={idade}
-						onChange={(e) => setIdade(e.target.value)}
-						required
-						style={{ marginBottom: "10px", padding: "10px", borderRadius: "4px", border: "1px solid #ccc", fontSize: "16px" }}
-					/>
-					<button
-						type="submit"
-						style={{ padding: "10px", backgroundColor: "#0070f3", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px", transition: "background-color 0.3s" }}
-					>
-						Salvar
-					</button>
-					{error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
-					{message && <p style={{ color: "green", marginTop: "10px" }}>{message}</p>}
-				</form>
+			<div className="max-w-2xl mx-auto">
+				<div className="bg-dark-800 rounded-xl shadow-dark-xl p-8 border border-dark-700 card-hover">
+					<h1 className="text-3xl font-bold text-dark-100 text-center mb-8">
+						Adicione um dado no FireStore
+					</h1>
+					
+					<form onSubmit={handleSubmit} className="space-y-6">
+						<div>
+							<label htmlFor="nome" className="block text-sm font-medium text-dark-300 mb-2">
+								Nome
+							</label>
+							<input
+								id="nome"
+								type="text"
+								placeholder="Digite o nome"
+								value={nome}
+								onChange={(e) => setNome(e.target.value)}
+								required
+								className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-dark-100 placeholder-dark-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+							/>
+						</div>
+						
+						<div>
+							<label htmlFor="idade" className="block text-sm font-medium text-dark-300 mb-2">
+								Idade
+							</label>
+							<input
+								id="idade"
+								type="number"
+								placeholder="Digite a idade"
+								value={idade}
+								onChange={(e) => setIdade(e.target.value)}
+								required
+								className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-dark-100 placeholder-dark-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+							/>
+						</div>
+						
+						<button
+							type="submit"
+							className="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+						>
+							Salvar
+						</button>
+						
+						{error && (
+							<div className="bg-red-900/50 border border-red-700 text-red-300 px-4 py-3 rounded-lg">
+								{error}
+							</div>
+						)}
+						
+						{message && (
+							<div className="bg-green-900/50 border border-green-700 text-green-300 px-4 py-3 rounded-lg">
+								{message}
+							</div>
+						)}
+					</form>
+				</div>
 			</div>
 		</Box>
 	);

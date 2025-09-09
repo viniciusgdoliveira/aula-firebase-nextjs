@@ -25,44 +25,48 @@ const Box = ({ children }: Props) => {
 	};
 
 	return (
-		<div style={{ padding: "20px" }}>
-			<header style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-				<h1>Olá, {user ? user.email : "Anonimo"}</h1> {/* Handle user null case */}
-				<div style={{ display: "flex", alignItems: "center" }}>
-					<Link
-						href="/create"
-						style={{ marginRight: "20px", textDecoration: "none", color: "#0070f3" }}
-					>
-						Adicionar
-					</Link>
-					<Link
-						href="/read"
-						style={{ marginRight: "20px", textDecoration: "none", color: "#0070f3" }}
-					>
-						Função GET
-					</Link>
-					<Link
-						href="/imagem"
-						style={{ marginRight: "20px", textDecoration: "none", color: "#0070f3" }}
-					>
-						Adicionar Imagem
-					</Link>
-					<Link
-						href="/getimage"
-						style={{ marginRight: "20px", textDecoration: "none", color: "#0070f3" }}
-					>
-						Todas Imagens
-					</Link>
-					<button
-						onClick={handleLogout}
-						style={{ padding: "8px", backgroundColor: "red", color: "white" }}
-					>
-						Logout
-					</button>
+		<div className="min-h-screen bg-dark-900">
+			<header className="bg-dark-800 border-b border-dark-700 px-6 py-4 shadow-dark-lg">
+				<div className="max-w-7xl mx-auto flex justify-between items-center">
+					<h1 className="text-xl font-semibold text-dark-100">
+						Olá, {user ? user.email : "Anônimo"}
+					</h1>
+					<div className="flex items-center space-x-6">
+						<Link
+							href="/create"
+							className="text-primary-400 hover:text-primary-300 transition-colors duration-200 font-medium"
+						>
+							Adicionar
+						</Link>
+						<Link
+							href="/read"
+							className="text-primary-400 hover:text-primary-300 transition-colors duration-200 font-medium"
+						>
+							Função GET
+						</Link>
+						<Link
+							href="/imagem"
+							className="text-primary-400 hover:text-primary-300 transition-colors duration-200 font-medium"
+						>
+							Adicionar Imagem
+						</Link>
+						<Link
+							href="/getimage"
+							className="text-primary-400 hover:text-primary-300 transition-colors duration-200 font-medium"
+						>
+							Todas Imagens
+						</Link>
+						<button
+							onClick={handleLogout}
+							className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
+						>
+							Logout
+						</button>
+					</div>
 				</div>
 			</header>
 
-			<main style={{ marginTop: "20px" }}>
+			<main className="max-w-7xl mx-auto px-6 py-8">
 				{children} {/* Render the child components (page content) */}
 			</main>
 		</div>
