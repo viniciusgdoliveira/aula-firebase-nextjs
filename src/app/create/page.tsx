@@ -5,11 +5,13 @@ import { useUser } from "@/context/UserContext";
 import { addDoc, collection } from "firebase/firestore"; // Import Firestore functions
 import Box from "@/components/Box";
 import { db } from "../../../firebase";
+import { useTheme } from "@/context/ThemeContext";
 
 // Ensure this file is treated as a Client Component
 
 const CreatePage = () => {
 	const { user } = useUser(); // Access user context
+	const { theme } = useTheme();
 	const [nome, setNome] = useState("");
 	const [idade, setIdade] = useState("");
 	const [error, setError] = useState("");
@@ -43,17 +45,64 @@ const CreatePage = () => {
 		}
 	};
 
+	const getThemeClasses = () => {
+		switch (theme) {
+			case "light":
+				return {
+					card: "bg-white rounded-xl shadow-light-xl p-8 border border-light-200 card-hover",
+					title: "text-3xl font-bold text-light-900 text-center mb-8",
+					label: "block text-sm font-medium text-light-700 mb-2",
+					input: "w-full px-4 py-3 bg-light-100 border border-light-300 rounded-lg text-light-900 placeholder-light-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200",
+					button: "w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
+					error: "bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg",
+					success: "bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg"
+				};
+			case "dark":
+				return {
+					card: "bg-dark-800 rounded-xl shadow-dark-xl p-8 border border-dark-700 card-hover",
+					title: "text-3xl font-bold text-dark-100 text-center mb-8",
+					label: "block text-sm font-medium text-dark-300 mb-2",
+					input: "w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-dark-100 placeholder-dark-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200",
+					button: "w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
+					error: "bg-red-900/50 border border-red-700 text-red-300 px-4 py-3 rounded-lg",
+					success: "bg-green-900/50 border border-green-700 text-green-300 px-4 py-3 rounded-lg"
+				};
+			case "liquid-glass":
+				return {
+					card: "glass-card rounded-xl shadow-glass-xl p-8 border border-white/25 card-hover float",
+					title: "text-3xl font-bold text-white text-center mb-8",
+					label: "block text-sm font-medium text-white/90 mb-2",
+					input: "w-full px-4 py-3 glass-input rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200",
+					button: "w-full glass-button hover:bg-white/25 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 shadow-glass-lg hover:shadow-glass-xl transform hover:-translate-y-0.5",
+					error: "bg-red-500/20 border border-red-400/50 text-red-200 px-4 py-3 rounded-lg backdrop-blur-sm",
+					success: "bg-green-500/20 border border-green-400/50 text-green-200 px-4 py-3 rounded-lg backdrop-blur-sm"
+				};
+			default:
+				return {
+					card: "bg-dark-800 rounded-xl shadow-dark-xl p-8 border border-dark-700 card-hover",
+					title: "text-3xl font-bold text-dark-100 text-center mb-8",
+					label: "block text-sm font-medium text-dark-300 mb-2",
+					input: "w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-dark-100 placeholder-dark-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200",
+					button: "w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5",
+					error: "bg-red-900/50 border border-red-700 text-red-300 px-4 py-3 rounded-lg",
+					success: "bg-green-900/50 border border-green-700 text-green-300 px-4 py-3 rounded-lg"
+				};
+		}
+	};
+
+	const themeClasses = getThemeClasses();
+
 	return (
 		<Box>
 			<div className="max-w-2xl mx-auto">
-				<div className="bg-dark-800 rounded-xl shadow-dark-xl p-8 border border-dark-700 card-hover">
-					<h1 className="text-3xl font-bold text-dark-100 text-center mb-8">
+				<div className={themeClasses.card}>
+					<h1 className={themeClasses.title}>
 						Adicione um dado no FireStore
 					</h1>
 					
 					<form onSubmit={handleSubmit} className="space-y-6">
 						<div>
-							<label htmlFor="nome" className="block text-sm font-medium text-dark-300 mb-2">
+							<label htmlFor="nome" className={themeClasses.label}>
 								Nome
 							</label>
 							<input
@@ -63,12 +112,12 @@ const CreatePage = () => {
 								value={nome}
 								onChange={(e) => setNome(e.target.value)}
 								required
-								className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-dark-100 placeholder-dark-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+								className={themeClasses.input}
 							/>
 						</div>
 						
 						<div>
-							<label htmlFor="idade" className="block text-sm font-medium text-dark-300 mb-2">
+							<label htmlFor="idade" className={themeClasses.label}>
 								Idade
 							</label>
 							<input
@@ -78,25 +127,25 @@ const CreatePage = () => {
 								value={idade}
 								onChange={(e) => setIdade(e.target.value)}
 								required
-								className="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg text-dark-100 placeholder-dark-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+								className={themeClasses.input}
 							/>
 						</div>
 						
 						<button
 							type="submit"
-							className="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+							className={themeClasses.button}
 						>
 							Salvar
 						</button>
 						
 						{error && (
-							<div className="bg-red-900/50 border border-red-700 text-red-300 px-4 py-3 rounded-lg">
+							<div className={themeClasses.error}>
 								{error}
 							</div>
 						)}
 						
 						{message && (
-							<div className="bg-green-900/50 border border-green-700 text-green-300 px-4 py-3 rounded-lg">
+							<div className={themeClasses.success}>
 								{message}
 							</div>
 						)}
