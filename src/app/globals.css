@@ -48,24 +48,24 @@
 }
 
 .liquid-glass {
-  /* Liquid Glass theme variables - Water drop effect */
-  --background: #6b7280;
+  /* iOS 26 Liquid Glass theme variables - Dynamic adaptation */
+  --background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   --foreground: #ffffff;
-  --card: rgba(255, 255, 255, 0.15);
+  --card: rgba(255, 255, 255, 0.08);
   --card-foreground: #ffffff;
-  --border: rgba(255, 255, 255, 0.25);
-  --input: rgba(255, 255, 255, 0.15);
-  --primary: #0ea5e9;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.08);
+  --primary: #007AFF;
   --primary-foreground: #ffffff;
-  --secondary: rgba(255, 255, 255, 0.15);
+  --secondary: rgba(255, 255, 255, 0.08);
   --secondary-foreground: #ffffff;
-  --muted: rgba(255, 255, 255, 0.15);
-  --muted-foreground: rgba(255, 255, 255, 0.8);
-  --accent: rgba(255, 255, 255, 0.15);
+  --muted: rgba(255, 255, 255, 0.08);
+  --muted-foreground: rgba(255, 255, 255, 0.7);
+  --accent: rgba(255, 255, 255, 0.08);
   --accent-foreground: #ffffff;
-  --destructive: #ef4444;
+  --destructive: #FF3B30;
   --destructive-foreground: #ffffff;
-  --ring: #0ea5e9;
+  --ring: #007AFF;
 }
 
 /* Base styles */
@@ -90,15 +90,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Liquid Glass specific body background - Grey with subtle texture */
+/* iOS 26 Liquid Glass specific body background - Dynamic gradient */
 .liquid-glass body {
-  background: #6b7280;
-  background-image: 
-    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   background-attachment: fixed;
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
   min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 a {
@@ -207,94 +211,180 @@ select:hover {
   backdrop-filter: blur(16px);
 }
 
-/* Liquid Glass specific effects - Water drop appearance */
+/* iOS 26 Liquid Glass specific effects - Dynamic adaptation */
 .liquid-glass .glass-effect {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 
-    0 8px 32px 0 rgba(31, 38, 135, 0.37),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+    0 8px 32px 0 rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 20px rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.liquid-glass .glass-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
 }
 
 .liquid-glass .glass-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 
-    0 8px 32px 0 rgba(31, 38, 135, 0.37),
+    0 8px 32px 0 rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 20px rgba(255, 255, 255, 0.1);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.liquid-glass .glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.liquid-glass .glass-card:hover {
+  box-shadow: 
+    0 12px 40px 0 rgba(0, 0, 0, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 .liquid-glass .glass-button {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(15px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: white;
   box-shadow: 
-    0 4px 16px 0 rgba(31, 38, 135, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 4px 16px 0 rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.liquid-glass .glass-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
 }
 
 .liquid-glass .glass-button:hover {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(20px) saturate(200%);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30px) saturate(250%);
   box-shadow: 
-    0 6px 20px 0 rgba(31, 38, 135, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    0 6px 20px 0 rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.liquid-glass .glass-button:active {
+  transform: scale(0.98);
 }
 
 .liquid-glass .glass-input {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(15px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: white;
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .liquid-glass .glass-input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .liquid-glass .glass-input:focus {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px) saturate(200%);
-  border-color: rgba(14, 165, 233, 0.6);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(30px) saturate(250%);
+  border-color: rgba(0, 122, 255, 0.5);
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    0 0 0 1px rgba(14, 165, 233, 0.3),
-    0 0 20px rgba(14, 165, 233, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(0, 122, 255, 0.3),
+    0 0 20px rgba(0, 122, 255, 0.2);
 }
 
-/* Floating animation for liquid glass elements */
-.liquid-glass .float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Glow effect for liquid glass */
+/* iOS 26 Liquid Glass static effects - No movement */
 .liquid-glass .glow {
-  animation: glow 2s ease-in-out infinite alternate;
+  animation: glow 3s ease-in-out infinite alternate;
 }
 
-/* Shimmer effect */
-.shimmer {
+.liquid-glass .shimmer {
   position: relative;
   overflow: hidden;
 }
 
-.shimmer::before {
+.liquid-glass .shimmer::before {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  animation: shimmer 2s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 3s linear infinite;
+}
+
+/* iOS 26 Liquid Glass specific animations - Static only */
+@keyframes glow {
+  0% { 
+    box-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.1),
+      0 0 40px rgba(255, 255, 255, 0.05);
+  }
+  100% { 
+    box-shadow: 
+      0 0 30px rgba(255, 255, 255, 0.2),
+      0 0 60px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* iOS 26 Liquid Glass environmental reflection */
+.liquid-glass .reflection {
+  position: relative;
+}
+
+.liquid-glass .reflection::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.05) 100%);
+  pointer-events: none;
+  border-radius: inherit;
 }
 
 /* Theme transition animations */

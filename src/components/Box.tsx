@@ -47,11 +47,11 @@ const Box = ({ children }: Props) => {
 				};
 			case "liquid-glass":
 				return {
-					container: "min-h-screen bg-gray-500",
-					header: "glass-effect border-b border-white/25 shadow-glass-lg",
+					container: "min-h-screen",
+					header: "glass-effect border-b border-white/12 shadow-glass-lg reflection",
 					title: "text-xl font-semibold text-white",
 					link: "text-white/90 hover:text-white transition-colors duration-200 font-medium",
-					button: "glass-button hover:bg-white/25 px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-glass-lg hover:shadow-glass-xl"
+					button: "glass-button hover:bg-white/15 px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-glass-lg hover:shadow-glass-xl"
 				};
 			default:
 				return {

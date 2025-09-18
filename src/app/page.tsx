@@ -52,13 +52,13 @@ const HomePage = () => {
 				};
 			case "liquid-glass":
 				return {
-					container: "min-h-screen bg-gray-500 flex items-center justify-center px-4",
-					card: "glass-card rounded-xl shadow-glass-xl p-8 border border-white/25 float",
+					container: "min-h-screen flex items-center justify-center px-4",
+					card: "glass-card rounded-xl shadow-glass-xl p-8 border border-white/12 reflection shimmer",
 					title: "text-3xl font-bold text-white mb-2",
 					subtitle: "text-white/80",
 					label: "block text-sm font-medium text-white/90 mb-2",
-					input: "w-full px-4 py-3 glass-input rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200",
-					button: "w-full glass-button hover:bg-white/25 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 shadow-glass-lg hover:shadow-glass-xl transform hover:-translate-y-0.5",
+					input: "w-full px-4 py-3 glass-input rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200",
+					button: "w-full glass-button hover:bg-white/15 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 shadow-glass-lg hover:shadow-glass-xl",
 					link: "text-white/90 hover:text-white transition-colors duration-200 font-medium"
 				};
 			default:
